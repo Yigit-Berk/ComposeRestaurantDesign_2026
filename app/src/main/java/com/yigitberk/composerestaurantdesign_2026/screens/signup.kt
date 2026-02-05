@@ -35,7 +35,7 @@ import com.yigitberk.composerestaurantdesign_2026.R
 import com.yigitberk.composerestaurantdesign_2026.ui.theme.ComposeRestaurantDesign_2026Theme
 
 @Composable
-fun login() {
+fun signup() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
@@ -205,6 +205,6 @@ fun login() {
 @Composable
 fun GreetingPreview() {
     ComposeRestaurantDesign_2026Theme {
-        login()
+        signup()
     }
 }
