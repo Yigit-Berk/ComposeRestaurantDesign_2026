@@ -2,11 +2,8 @@ package com.yigitberk.composerestaurantdesign_2026.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,10 +14,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -29,7 +24,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -43,7 +37,7 @@ import com.yigitberk.composerestaurantdesign_2026.ui.theme.ComposeRestaurantDesi
 
 
 @Composable
-fun ForgotPasswordScreen() {
+fun ResetPasswordScreen() {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -51,14 +45,14 @@ fun ForgotPasswordScreen() {
             .fillMaxSize()
     ) {
         Image(
-            painter = painterResource(R.drawable.forgotpassword_pic),
-            contentDescription = "Forgot Password Picture",
+            painter = painterResource(R.drawable.resetpassword_pic),
+            contentDescription = "Reset Password Picture",
             modifier = Modifier.fillMaxWidth()
                 .height(280.dp)
         )
         Spacer(modifier = Modifier.height(32.dp))
         Text(
-            text = "Forgot\nPassword?",
+            text = "Reset\nPassword",
             style = TextStyle(
                 fontSize = 34.sp,
                 fontWeight = FontWeight.Bold,
@@ -71,24 +65,17 @@ fun ForgotPasswordScreen() {
         )
 
         //Input Fields
-        var email = remember { mutableStateOf("") }
-
-        Spacer(Modifier.height(30.dp))
-
-        Text(
-            modifier = Modifier.padding(horizontal = 30.dp),
-            text =  "Don’t Worry it happens. Please Enter an email or Mobile associated with your account",
-            style = MaterialTheme.typography.bodyLarge
-        )
+        var newPassword = remember { mutableStateOf("") }
+        var confirmPassword = remember { mutableStateOf("") }
 
         Spacer(Modifier.height(30.dp))
 
         TextField(
-            value = email.value,
+            value = newPassword.value,
             onValueChange = {
-                email.value = it
+                newPassword.value = it
             },
-            label = { Text(text = "EmailID or Mobile") },
+            label = { Text(text = "New Password") },
             modifier = Modifier.fillMaxWidth()
                 .padding(horizontal = 30.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -99,7 +86,30 @@ fun ForgotPasswordScreen() {
             leadingIcon = {
                 Image(
                     painter = painterResource(id = R.drawable.work),
-                    contentDescription = "Email Icon",
+                    contentDescription = "New Password Icon",
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+        )
+        Spacer(Modifier.height(30.dp))
+
+        TextField(
+            value = confirmPassword.value,
+            onValueChange = {
+                confirmPassword.value = it
+            },
+            label = { Text(text = "Confirm Password") },
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 30.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color.Transparent,
+                focusedContainerColor = Color.Transparent
+            ),
+            leadingIcon = {
+                Image(
+                    painter = painterResource(id = R.drawable.work),
+                    contentDescription = "Confirm Password Icon",
                     modifier = Modifier.size(20.dp)
                 )
             }
@@ -115,7 +125,7 @@ fun ForgotPasswordScreen() {
             shape = RoundedCornerShape(12.dp)// for corner radius
         ) {
             Text(
-                text = "Submit",
+                text = "Submitting",
                 color = Color.Black,
                 style = TextStyle(
                     fontSize = 18.sp
@@ -128,8 +138,8 @@ fun ForgotPasswordScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun ForgotPasswordPreview() {
+fun ResetPasswordPreview() {
     ComposeRestaurantDesign_2026Theme {
-        ForgotPasswordScreen()
+        ResetPasswordScreen()
     }
 }
