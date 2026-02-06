@@ -24,6 +24,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -70,14 +71,16 @@ fun LoginScreen() {
         )
 
         //Input Fields
-        val email = remember { "" }
-        val password = remember { "" }
+        var email = remember { mutableStateOf("") }
+        var password = remember { mutableStateOf("") }
 
         Spacer(modifier = Modifier.height(10.dp))
 
             TextField(
-                value = email,
-                onValueChange = {},
+                value = email.value,
+                onValueChange = {
+                    email.value = it
+                },
                 label = { Text(text = "EmailID or Mobile") },
                 modifier = Modifier.fillMaxWidth()
                     .padding(horizontal = 30.dp),
@@ -98,8 +101,10 @@ fun LoginScreen() {
             Spacer(Modifier.height(10.dp))
 
             TextField(
-                value = password,
-                onValueChange = {},
+                value = password.value,
+                onValueChange = {
+                    password.value = it
+                },
                 label = { Text(text = "Password") },
                 modifier = Modifier.fillMaxWidth()
                     .padding(horizontal = 30.dp),
