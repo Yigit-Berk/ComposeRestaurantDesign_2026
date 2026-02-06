@@ -6,6 +6,7 @@ import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +17,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -113,7 +116,9 @@ fun LoginScreen() {
                     )
                 }
             )
+
             Spacer(Modifier.height(10.dp))
+
             TextButton(
                 onClick = { "navigate to screen" },
                 modifier = Modifier.fillMaxWidth()
@@ -143,6 +148,117 @@ fun LoginScreen() {
                 )
             )
         }
+
+        Spacer(Modifier.height(20.dp))
+
+        // OR text
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Left Line
+            HorizontalDivider(
+                modifier = Modifier.weight(1f),
+                thickness = 1.dp,
+                color = Color.LightGray
+            )
+
+            // Middle Text
+            Text(
+                text = "OR",
+                modifier = Modifier.padding(horizontal = 16.dp),
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.Black
+            )
+
+            // Right Line
+            HorizontalDivider(
+                modifier = Modifier.weight(1f),
+                thickness = 1.dp,
+                color = Color.LightGray
+            )
+        }
+
+        Spacer(Modifier.height(20.dp))
+
+        Button(modifier = Modifier.fillMaxWidth()
+            .height(48.dp)
+            .padding(horizontal = 30.dp),
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(Color(243,242,242)),
+            shape = RoundedCornerShape(12.dp)// for corner radius
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Start // İkonu sola, yazıyı merkeze almak için
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.icon_google),
+                    contentDescription = "Google Logo",
+                    modifier = Modifier.size(24.dp)
+                )
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Login With Google",
+                    color = Color.Black,
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+
+        Spacer(Modifier.height(10.dp))
+
+        Button(modifier = Modifier.fillMaxWidth()
+            .height(48.dp)
+            .padding(horizontal = 30.dp),
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(Color(243,242,242)),
+            shape = RoundedCornerShape(12.dp)// for corner radius
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Start // icon to the left and text to be centered
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.icon_facebook),
+                    contentDescription = "Facebook Logo",
+                    modifier = Modifier.size(24.dp)
+                )
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Login With Facebook",
+                    color = Color.Black,
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+
+        Spacer(Modifier.height(20.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 30.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(
+                "New to us?"
+            )
+            TextButton(
+                onClick = {/*Navigate to ...*/}
+            ) {
+                Text(
+                    "Register"
+                )
+            }
+        }
+
 
 
     }
