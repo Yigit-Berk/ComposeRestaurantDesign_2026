@@ -77,7 +77,7 @@ fun SignUpConfirmScreen() {
             contentDescription = "Reset Password Picture",
             modifier = Modifier.fillMaxWidth()
                 .height(150.dp)
-                .padding(horizontal = 30.dp)
+                .padding(horizontal = 100.dp)
         )
 
         Spacer(modifier = Modifier.height(60.dp))

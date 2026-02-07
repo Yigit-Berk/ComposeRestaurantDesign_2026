@@ -55,6 +55,7 @@ fun ForgotPasswordScreen() {
             contentDescription = "Forgot Password Picture",
             modifier = Modifier.fillMaxWidth()
                 .height(280.dp)
+                .padding(horizontal = 30.dp)
         )
         Spacer(modifier = Modifier.height(32.dp))
         Text(
