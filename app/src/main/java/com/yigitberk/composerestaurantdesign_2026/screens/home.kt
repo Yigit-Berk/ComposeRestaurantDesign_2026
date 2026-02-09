@@ -1,11 +1,14 @@
 package com.yigitberk.composerestaurantdesign_2026.screens
 
 import android.widget.Space
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -13,9 +16,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
@@ -23,9 +28,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Shapes
+import androidx.compose.material3.SuggestionChip
+import androidx.compose.material3.SuggestionChipDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,14 +42,20 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.yigitberk.composerestaurantdesign_2026.R
 import com.yigitberk.composerestaurantdesign_2026.ui.theme.ComposeRestaurantDesign_2026Theme
 
@@ -56,7 +70,6 @@ fun HomeScreen(){
         horizontalAlignment = Alignment.CenterHorizontally
          */
     ) {
-
 
         // isToggled initial value should be read from a view model or persistent storage.
         var isToggled by rememberSaveable { mutableStateOf(false) }
@@ -130,10 +143,103 @@ fun HomeScreen(){
             modifier = Modifier
                 .fillMaxSize().background(Color.White)
         ) {
+            item {
+                RestaurantItem()
+            }
+        }
+
+
+    }
+
+
+}
+
+//Row View
+@Composable
+fun RestaurantItem(){
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(30.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth()
+                .clip(RoundedCornerShape(15.dp))
+                .height(IntrinsicSize.Max)
+                .background(Color(240,240,240))
+                .padding(top = 10.dp, bottom = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Spacer(Modifier.width(20.dp))
+            Image(
+                painter = painterResource(R.drawable.restaurant_pic),
+                contentDescription = "Restaurant Picture",
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(100.dp)
+            )
+
+            Spacer(Modifier.width(20.dp))
+
+            Column(
+                modifier = Modifier.fillMaxHeight(),
+                verticalArrangement = Arrangement.spacedBy(6.dp), //6.dp between elements
+                horizontalAlignment = Alignment.Start
+            ) {
+                //Restaurant Header
+                Text(
+                    text = "ABC Restaurant",
+                    style = TextStyle(
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                )
+                //Star Rating
+                Image(
+                    painter = painterResource(R.drawable.five_star_pic),
+                    contentDescription = "Restaurant star rating",
+                    modifier = Modifier
+                        .height(20.dp)
+                        .fillMaxWidth(),
+                    alignment = Alignment.CenterStart
+                )
+                SuggestionChip(
+                    onClick = { /* ... */ },
+                    label = {
+                        Text(
+                            text = "Recommended",
+                            style = MaterialTheme.typography.labelMedium
+                        )
+                    },
+                    shape = RoundedCornerShape(8.dp), // corner radius
+                    colors = SuggestionChipDefaults.suggestionChipColors(
+                        containerColor = Color(0xFFBDC3C7), // gray color
+                        labelColor = Color.Black
+                    ),
+                    border = null,
+                    modifier = Modifier.height(27.dp)
+                )
+                //information for restaurant
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.icon_database),
+                        contentDescription = "database icon",
+                        modifier = Modifier.size(14.dp)
+                    )
+                    Spacer(Modifier.width(6.dp))
+                    Text(
+                        text = "18"
+                    )
+                }
+
+            }
 
         }
     }
-
 }
 
 //SearchBar with suggestions
