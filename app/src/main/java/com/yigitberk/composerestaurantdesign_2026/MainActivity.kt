@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.yigitberk.composerestaurantdesign_2026.screens.HomeScreen
 import com.yigitberk.composerestaurantdesign_2026.screens.LoginScreen
 import com.yigitberk.composerestaurantdesign_2026.screens.SignUpConfirmScreen
 import com.yigitberk.composerestaurantdesign_2026.screens.StartScreen
@@ -17,7 +18,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ComposeRestaurantDesign_2026Theme {
-                SignUpConfirmScreen()
+                HomeScreen()
             }
         }
     }
