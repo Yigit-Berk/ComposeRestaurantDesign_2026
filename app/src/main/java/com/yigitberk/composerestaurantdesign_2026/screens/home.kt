@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
@@ -84,14 +85,14 @@ fun HomeScreen(){
         Column(
             modifier = Modifier.background(Color(100, 252, 217))
                 .fillMaxWidth()
-                .padding(top = 40.dp, bottom = 20.dp) // Sabit height yerine padding ile nefes aldırıyoruz
-                .padding(horizontal = 30.dp),
-            verticalArrangement = Arrangement.Center,
+                .statusBarsPadding() // To prevent the icons from overlapping (on the clock, etc.)
+                .padding(horizontal = 30.dp, vertical = 10.dp),
+            //verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Row(
-                modifier = Modifier.fillMaxWidth().height(80.dp),
+                modifier = Modifier.fillMaxWidth().height(60.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween //separate them to the right and left
             ) {
@@ -141,16 +142,15 @@ fun HomeScreen(){
         /*Rows*/
         LazyColumn(
             modifier = Modifier
-                .fillMaxSize().background(Color.White)
+                .fillMaxSize()
+                .background(Color.White)
         ) {
-            item {
+            items(6){
                 RestaurantItem()
             }
         }
 
-
     }
-
 
 }
 
@@ -160,7 +160,7 @@ fun RestaurantItem(){
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(30.dp)
+            .padding(horizontal = 30.dp, vertical = 10.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -190,7 +190,7 @@ fun RestaurantItem(){
                 Text(
                     text = "ABC Restaurant",
                     style = TextStyle(
-                        fontSize = 22.sp,
+                        fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
                     )
