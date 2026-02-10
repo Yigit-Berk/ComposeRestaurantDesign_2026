@@ -31,11 +31,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.yigitberk.composerestaurantdesign_2026.R
 import com.yigitberk.composerestaurantdesign_2026.ui.theme.ComposeRestaurantDesign_2026Theme
 
 @Composable
-fun signup() {
+fun SignupScreen(navController: NavController) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
@@ -175,7 +177,9 @@ fun signup() {
 
             // Continue button
             Button(
-                onClick = { /* Handle sign-up action */ },
+                onClick = {
+                    navController.navigate("SignupConfirm_Screen")
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
@@ -205,6 +209,6 @@ fun signup() {
 @Composable
 fun GreetingPreview() {
     ComposeRestaurantDesign_2026Theme {
-        signup()
+        SignupScreen(navController = rememberNavController())
     }
 }

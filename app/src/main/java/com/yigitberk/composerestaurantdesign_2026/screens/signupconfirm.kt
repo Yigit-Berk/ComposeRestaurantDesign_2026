@@ -30,6 +30,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.decode.GifDecoder
@@ -40,7 +42,7 @@ import com.yigitberk.composerestaurantdesign_2026.ui.theme.ComposeRestaurantDesi
 
 
 @Composable
-fun SignUpConfirmScreen() {
+fun SignUpConfirmScreen(navController: NavController) {
     val context = LocalContext.current
 
     Column(
@@ -94,7 +96,9 @@ fun SignUpConfirmScreen() {
         Button(modifier = Modifier.fillMaxWidth()
             .height(48.dp)
             .padding(horizontal = 30.dp),
-            onClick = {},
+            onClick = {
+                navController.navigate("Login_Screen")
+            },
             colors = ButtonDefaults.buttonColors(Color(100,252,217)),
             shape = RoundedCornerShape(12.dp)// for corner radius
         ) {
@@ -114,6 +118,6 @@ fun SignUpConfirmScreen() {
 @Composable
 fun SignUpConfirmPreview() {
     ComposeRestaurantDesign_2026Theme {
-        SignUpConfirmScreen()
+        SignUpConfirmScreen(navController = rememberNavController())
     }
 }

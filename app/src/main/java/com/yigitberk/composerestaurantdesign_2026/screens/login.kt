@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -38,17 +39,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.yigitberk.composerestaurantdesign_2026.R
 import com.yigitberk.composerestaurantdesign_2026.ui.theme.ComposeRestaurantDesign_2026Theme
 
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.background(Color.White)
             .fillMaxSize()
+            .statusBarsPadding()
     ) {
         Image(
             painter = painterResource(R.drawable.login_pic),
@@ -126,7 +130,9 @@ fun LoginScreen() {
             Spacer(Modifier.height(10.dp))
 
             TextButton(
-                onClick = { "navigate to screen" },
+                onClick = {
+                    navController.navigate("ForgotPassword_Screen")
+                },
                 modifier = Modifier.fillMaxWidth()
                     .padding(horizontal = 30.dp)
             ) {
@@ -142,7 +148,10 @@ fun LoginScreen() {
         Button(modifier = Modifier.fillMaxWidth()
             .height(48.dp)
             .padding(horizontal = 30.dp),
-            onClick = {},
+            onClick = {
+                //if successful...
+                navController.navigate("Home_Screen")
+            },
             colors = ButtonDefaults.buttonColors(Color(100,252,217)),
             shape = RoundedCornerShape(12.dp)// for corner radius
         ) {
@@ -257,7 +266,9 @@ fun LoginScreen() {
                 "New to us?"
             )
             TextButton(
-                onClick = {/*Navigate to ...*/}
+                onClick = {
+                    navController.navigate("Signup_Screen")
+                }
             ) {
                 Text(
                     "Register"
@@ -274,6 +285,6 @@ fun LoginScreen() {
 @Composable
 fun LoginPreview() {
     ComposeRestaurantDesign_2026Theme {
-        LoginScreen()
+        LoginScreen(navController = rememberNavController())
     }
 }
