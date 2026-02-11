@@ -1,5 +1,5 @@
 # ComposeRestaurantDesign_2026
-Hazır bir Figma restoran tasarımı üzerinden Jetpack Compose ile yapmış olduğum basit bir  UI çalışması örneği
+Hazır bir Figma restoran tasarımı üzerinden Jetpack Compose ve navigation kodları ile yapmış olduğum basit bir UI çalışması örneği
 
 # Kaynak
 https://www.figma.com/design/lJ6YWGt1wq4oVjsbsADJDg/Restaurant-Mobile-App-UI-Design--Community-?node-id=0-1&p=f
